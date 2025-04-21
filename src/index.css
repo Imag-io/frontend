@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+html,body,#root{height:100%;margin:0;font-family:system-ui,Arial,sans-serif}
+h1{margin:0 0 1rem 0}
+
+.app-wrapper{
+  display:flex;                /* desktop: sidebar + main */
+  gap:1rem;
+  height:100%;
+  padding:1rem;
+  box-sizing:border-box;
+}
+
+/* sidebar column */
+.sidebar{
+  flex:0 0 300px;              /* fixed width */
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+/* main canvas */
+.canvas{
+  flex:1 1 auto;               /* fill remaining space */
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  min-width:0;                 /* let Leaflet shrink correctly */
+}
+
+/* make the map fill available height */
+.canvas .leaflet-container{
+  flex:1 1 auto !important;
+}
+
+/* mobile: stack everything */
+@media (max-width:768px){
+  .app-wrapper{flex-direction:column}
+  .sidebar{flex:auto}
+}
